@@ -11,7 +11,7 @@
         <form class="m-4" action="{{ route('search') }}" method="get">
            @csrf
             <input  type="search" name="search" id="search">
-            <button class="btn btn-primary a">Pesquisar</button>
+            <button class="btn btn-primary ">Pesquisar</button>
         </form>
 
         <table class="table">
