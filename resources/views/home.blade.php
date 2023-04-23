@@ -10,9 +10,9 @@
     <div class="container">
         <form class="m-4" action="{{ route('search') }}" method="get">
            @csrf
-            <input  type="search" name="search" id="search">
+            <input type="search" name="search" id="search" placeholder="Nome/E-mail">
             <button class="btn btn-primary ">Pesquisar</button>
-        </form>
+        </form>        
 
         <table class="table">
             <thead>
@@ -20,16 +20,22 @@
                     <th>#</th>
                     <th>Nome</th>
                     <th>E-mail</th>
+                    <th>Data</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($users as $user)
+            @forelse($users as $user)
                 <tr>                    
                     <td>{{ $user->id }}</td>
                     <td>{{ $user->name }}</td>
-                    <td>{{ $user-> email }}</td>                    
+                    <td>{{ $user->email }}</td>
+                    <td>{{ $user->data_formatada }}</td>                    
                 </tr>
-                @endforeach
+            @empty
+                <tr>
+                    <td colspan="3">Não há usuários cadastrados</td>
+                </tr>
+            @endforelse
             </tbody>
         </table>
     </div>
